@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class UserS {
-	private ArrayList<User> list = new ArrayList<>();
+	private ArrayList<User> list = new ArrayList<>();//创建文件
 	File file = new File("message" + File.separator + "message");
 	public UserS() {
 		// TODO Auto-generated constructor stub
@@ -23,7 +23,7 @@ public class UserS {
 		}
 	}
 
-	public boolean addUser(User user) {
+	public boolean addUser(User user) {//添加数据
 		list = UserI();
 		list.add(user);
 		FileOutputStream fis = null;
@@ -39,7 +39,7 @@ public class UserS {
 
 		return true;
 	}
-	public boolean deleteuser(User user) {
+	public boolean deleteuser(User user) {//删除客户信息
 		list = UserI();
 		list.remove(user);
 		FileOutputStream fis = null;
@@ -56,7 +56,39 @@ public class UserS {
 		return true;
 	}
 	
-	public ArrayList<User> UserI() {
+	public boolean amenduser(User user) {
+		list = UserI();
+		if(!list.contains(user)) {
+			return false;
+		}
+		int i = list.indexOf(user);
+		list.set(i, user);
+		FileOutputStream fis = null;
+		ObjectOutputStream ois = null;
+		try {
+			fis = new FileOutputStream(file);
+			ois = new ObjectOutputStream(fis);
+			ois.writeObject(list);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return true;
+	}
+	public User getUserByAccount(String account) {
+		User temp = new User(account, null, null);
+		list = UserI();
+		if(!list.contains(temp)) {
+			return null;
+		}
+		int i = list.indexOf(temp);
+		return list.get(i);
+		
+	}
+	
+	
+	public ArrayList<User> UserI() {//读取文件
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
 		try {

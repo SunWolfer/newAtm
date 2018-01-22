@@ -32,7 +32,8 @@ public class AdminMenu {
 			}
 		}
 		if(str.equals("4")) {
-
+			Amend amend = new Amend();
+			amend.amend();
 		}
 		if(str.equals("5")) {
 			Interface interface1 = new Interface();

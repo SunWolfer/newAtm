@@ -153,6 +153,7 @@ public class User  implements Serializable{
 	public String toString() {
 		// TODO Auto-generated method stub
 		return String.join(",", "卡号"+account,"\n"+"姓名"+name,"\n"+"余额"+""+balance,"\n"+"密码"+password,"\n"+"性别(1代表男，2代表女)"+gender,//用户信息
-			"\n"+"身份证"+id,"\n"+"学历(1代表  小学  2代表 中学  3代表大学 4代表其他):"+education,"\n"+"地址:"+address);
+			"\n"+"身份证"+id,"\n"+"学历(1代表  小学  2代表 中学  3代表大学 4代表其他):"+education,"\n"+"地址:"+address+"\n"+"交易记录"+getSb()+"\n");
 	}
+
 }

@@ -1,5 +1,6 @@
 package com.feicui.com.admin;//开户
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import com.feicui.com.user.User;
@@ -7,6 +8,7 @@ import com.feicui.com.user.User;
 public class Atm {
 	User user = new User(null, null, 0, null, null, null, null, null);
 	Scanner sc = new Scanner(System.in);
+	UserS userS = new UserS();
 	public void atmUser() {
 			importName();
 			importPass();
@@ -20,7 +22,7 @@ public class Atm {
 								"2:重新输入"+"\n");
 			String str = sc.nextLine();
 			if(str.equals("1")) {
-				UserS userS = new UserS();
+				
 				Object object = userS.UserI();
 				System.out.println(object);
 				userS.addUser(user);
@@ -74,6 +76,7 @@ public class Atm {
 		String str4 = sc.nextLine();
 		if(checkId(str4)) {
 			user.setId(str4);
+						
 		}else {
 			System.out.println("居民身份证必须为18位数字");
 			importId();

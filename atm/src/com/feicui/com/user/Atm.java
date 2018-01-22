@@ -13,13 +13,17 @@ public class Atm{
 	public void DrawBusiness(){
 
 		user.setBalance(user.getBalance()-user.getDraw());
+		userS.amenduser(user);
 	}
 	public void OperaBusiness(){
 		user.setBalance(user.getBalance()+user.getOpera());
+		userS.amenduser(user);
 	}
 	public void OtherBusiness(User otheruser){
 		user.setBalance(user.getBalance()-user.getOthermoney());
 		otheruser.setBalance(otheruser.getBalance()+user.getOthermoney());
+		userS.amenduser(user);
+		userS.amenduser(otheruser);
 	}
 	public User Finduser(User user){//—È÷§’Àªß
 		if(list.contains(user)) {
